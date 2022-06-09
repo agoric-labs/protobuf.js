@@ -1,3 +1,37 @@
+# Compatibility with Hardened JS Compartments
+
+**As introduced in https://github.com/protobufjs/protobuf.js/issues/1713 **
+
+The point of this fork is to allow using protobuf.js within a [Hardened JS compartment](https://github.com/endojs/endo/tree/master/packages/ses/README.md), such as in a smart contract on the [Agoric](https://agoric.com) blockchain.
+
+Just do:
+
+```sh
+# For NPM:
+npm i -D agoric-labs/protobuf.js#Agoric-built
+# For Yarn:
+yarn add -D protobufjs@agoric-labs/protobuf.js#Agoric-built
+```
+
+If you don't trust the minified code, you can browse the [patched source
+tree](https://github.com/agoric-labs/protobuf.js/tree/Agoric#readme).  We produced
+`Agoric-built` with:
+
+```sh
+npm run build
+git checkout -B Agoric-built
+git commit -a -m 'Built by `npm run build`'
+git push -f origin Agoric-built
+```
+
+Have fun,
+The team at [Agoric](https://github.com/Agoric).
+
+---
+
+We now return you to the regularly-scheduled (though slightly outdated) README
+from https://github.com/protobufjs/protobuf.js#readme:
+
 <h1><p align="center"><img alt="protobuf.js" src="https://github.com/dcodeIO/protobuf.js/raw/master/pbjs.png" width="120" height="104" /></p></h1>
 <p align="center"><a href="https://npmjs.org/package/protobufjs"><img src="https://img.shields.io/npm/v/protobufjs.svg" alt=""></a> <a href="https://travis-ci.org/dcodeIO/protobuf.js"><img src="https://travis-ci.org/dcodeIO/protobuf.js.svg?branch=master" alt=""></a> <a href="https://npmjs.org/package/protobufjs"><img src="https://img.shields.io/npm/dm/protobufjs.svg" alt=""></a> <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=dcode%40dcode.io&item_name=Open%20Source%20Software%20Donation&item_number=dcodeIO%2Fprotobuf.js"><img alt="donate ❤" src="https://img.shields.io/badge/donate-❤-ff2244.svg"></a></p>
 
