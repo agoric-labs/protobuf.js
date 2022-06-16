@@ -1,6 +1,6 @@
 /*!
- * protobuf.js v6.11.0 (c) 2016, daniel wirtz
- * compiled thu, 29 apr 2021 02:20:44 utc
+ * protobuf.js v6.11.3 (c) 2016, daniel wirtz
+ * compiled thu, 16 jun 2022 16:55:21 utc
  * licensed under the bsd-3-clause license
  * see: https://github.com/dcodeio/protobuf.js for details
  */
@@ -1775,7 +1775,8 @@ util.isNode = Boolean(typeof global !== "undefined"
  * @memberof util
  * @type {Object}
  */
-util.global = util.isNode && global
+util.global = typeof globalThis !== "undefined" && globalThis
+           || util.isNode && global
            || typeof window !== "undefined" && window
            || typeof self   !== "undefined" && self
            || this; // eslint-disable-line no-invalid-this
@@ -2014,13 +2015,14 @@ function newError(name) {
             merge(this, properties);
     }
 
-    (CustomError.prototype = Object.create(Error.prototype)).constructor = CustomError;
+    Object.defineProperty(CustomError.prototype = Object.create(Error.prototype), "constructor", { value: CustomError });
 
     Object.defineProperty(CustomError.prototype, "name", { get: function() { return name; } });
 
-    CustomError.prototype.toString = function toString() {
+    Object.defineProperty(CustomError.prototype, "toString", { value: function toString() {
         return this.name + ": " + this.message;
-    };
+      },
+    });
 
     return CustomError;
 }

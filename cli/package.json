@@ -1,8 +1,9 @@
 {
   "version": "6.9.0",
   "dependencies": {
-    "escodegen": "^2.0.0",
+    "escodegen": "^1.14.3",
     "espree": "^7.1.0",
+    "semver": "^7.3.7",
     "tmp": "^0.2.1"
   }
 }
